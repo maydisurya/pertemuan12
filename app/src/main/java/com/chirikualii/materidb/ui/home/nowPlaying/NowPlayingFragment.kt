@@ -1,10 +1,12 @@
 package com.chirikualii.materidb.ui.home.nowPlaying
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.chirikualii.materidb.R
@@ -12,6 +14,7 @@ import com.chirikualii.materidb.databinding.ActivityMainBinding
 import com.chirikualii.materidb.databinding.FragmentNowPlayingBinding
 import com.chirikualii.materidb.ui.MainViewModel
 import com.chirikualii.materidb.ui.MainViewModelFactory
+import com.chirikualii.materidb.ui.SearchActivity
 import com.chirikualii.materidb.ui.adapter.MovieListAdapter
 
 
@@ -40,7 +43,11 @@ class NowPlayingFragment : Fragment() {
         adapter = MovieListAdapter()
         binding.rvMovie.adapter = adapter
 
-
+        binding.tvSearch.setOnClickListener {
+            Toast.makeText(requireContext(),"search page", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
         observeView()
     }
 
