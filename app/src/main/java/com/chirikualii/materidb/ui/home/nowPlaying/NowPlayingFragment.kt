@@ -7,14 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
-import com.chirikualii.materidb.R
-import com.chirikualii.materidb.databinding.ActivityMainBinding
 import com.chirikualii.materidb.databinding.FragmentNowPlayingBinding
-import com.chirikualii.materidb.ui.MainViewModel
-import com.chirikualii.materidb.ui.MainViewModelFactory
-import com.chirikualii.materidb.ui.SearchActivity
+import com.chirikualii.materidb.ui.search.SearchActivity
 import com.chirikualii.materidb.ui.adapter.MovieListAdapter
 
 

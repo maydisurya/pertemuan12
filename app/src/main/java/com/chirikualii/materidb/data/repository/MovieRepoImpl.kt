@@ -142,5 +142,34 @@ class MovieRepoImpl(
         }
     }
 
+    override suspend fun getSearchMovie(query: String): List<Movie> {
+        try {
+            val response=service.getSearchMovie(query)
 
+            if (response.isSuccessful){
+
+                val listData = response.body()?.results
+                val listMovie=listData?.map {
+                    Movie(
+                        movieId = it.id.toString(),
+                        title =it.title.toString() ,
+                        releaseDate =it.releaseDate.toString() ,
+                        imagePoster =it.posterPath.toString() ,
+                        backdrop =it.backdropPath.toString(),
+                        overview =it.overview ,
+                    )
+                }
+
+                return listMovie?: emptyList()
+
+
+            }else{
+                Log.e("MovieRepo", "getSearchMovie: erroe ${response.message()}")
+                return emptyList()
+            }
+        }catch (e:Exception){
+            Log.e("MovieRepo", "getSearchMovie: error ${e.message}")
+            return emptyList()
+        }
+    }
 }
